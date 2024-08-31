@@ -8,6 +8,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Link from "next/link";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { FeatureContent } from "@/components/feature-content";
+
+const commonTabsTriggerClasses =
+  "text-very-dark-blue hover:text-soft-red data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
 
 export default function Home() {
   return (
@@ -90,51 +95,61 @@ export default function Home() {
       {/* Features Section */}
       <section
         id="features"
-        className="container mx-auto flex h-[800px] flex-col justify-center"
+        className="container mx-auto flex h-[800px] flex-col items-center"
       >
-        <h2 className="text-very-dark-blue mb-4 text-3xl font-bold">
-          Features
-        </h2>
-        <p className="text-grayish-blue mx-auto mb-8 max-w-lg">
-          Our aim is to make it quick and easy for you to access your favourite
-          websites. Your bookmarks sync between your devices so you can access
-          them on the go.
-        </p>
-        <div className="mb-16 flex justify-center space-x-8">
-          <button className="text-very-dark-blue border-soft-red border-b-4 pb-4">
-            Simple Bookmarking
-          </button>
-          <button className="text-grayish-blue hover:text-very-dark-blue">
-            Speedy Searching
-          </button>
-          <button className="text-grayish-blue hover:text-very-dark-blue">
-            Easy Sharing
-          </button>
+        <div className="mb-[72px] flex flex-col items-center">
+          <h2 className="text-very-dark-blue mb-4 text-3xl font-medium leading-[52px]">
+            Features
+          </h2>
+          <p className="text-grayish-blue mx-auto max-w-lg text-center text-lg leading-[28px]">
+            Our aim is to make it quick and easy for you to access your
+            favourite websites. Your bookmarks sync between your devices so you
+            can access them on the go.
+          </p>
         </div>
-        <div className="flex flex-col items-center md:flex-row">
-          <div className="relative mb-8 md:mb-0 md:w-1/2">
-            <Image
-              src="/images/illustration-features-tab-1.svg"
-              alt="Feature illustration"
-              width={536}
-              height={346}
+        <Tabs defaultValue="simple-bookmarking" className="w-full">
+          <TabsList className="mx-auto mb-16 flex w-[729px] justify-center bg-transparent text-base leading-[17px] tracking-[0.53px]">
+            <TabsTrigger
+              value="simple-bookmarking"
+              className={commonTabsTriggerClasses}
+            >
+              Simple Bookmarking
+            </TabsTrigger>
+            <TabsTrigger
+              value="speedy-searching"
+              className={commonTabsTriggerClasses}
+            >
+              Speedy Searching
+            </TabsTrigger>
+            <TabsTrigger
+              value="easy-sharing"
+              className={commonTabsTriggerClasses}
+            >
+              Easy Sharing
+            </TabsTrigger>
+          </TabsList>
+          <TabsContent value="simple-bookmarking">
+            <FeatureContent
+              imageSrc="/images/illustration-features-tab-1.svg"
+              title="Bookmark in one click"
+              description="Organize your bookmarks however you like. Our simple drag-and-drop interface gives you complete control over how you manage your favourite sites."
             />
-            <div className="bg-soft-blue absolute -bottom-10 -left-10 -z-10 h-4/5 w-3/4 rounded-r-full"></div>
-          </div>
-          <div className="space-y-8 text-left md:w-1/2 md:pl-16">
-            <h3 className="text-very-dark-blue text-2xl font-bold">
-              Bookmark in one click
-            </h3>
-            <p className="text-grayish-blue">
-              Organize your bookmarks however you like. Our simple drag-and-drop
-              interface gives you complete control over how you manage your
-              favourite sites.
-            </p>
-            <Button className="bg-soft-blue hover:text-soft-blue border-soft-blue border-2 hover:bg-white">
-              More Info
-            </Button>
-          </div>
-        </div>
+          </TabsContent>
+          <TabsContent value="speedy-searching">
+            <FeatureContent
+              imageSrc="/images/illustration-features-tab-2.svg"
+              title="Intelligent search"
+              description="Our powerful search feature will help you find saved sites in no time at all. No need to trawl through all of your bookmarks."
+            />
+          </TabsContent>
+          <TabsContent value="easy-sharing">
+            <FeatureContent
+              imageSrc="/images/illustration-features-tab-3.svg"
+              title="Share your bookmarks"
+              description="Easily share your bookmarks and collections with others. Create a shareable link that you can send at the click of a button."
+            />
+          </TabsContent>
+        </Tabs>
       </section>
 
       {/* Download Section */}
