@@ -52,36 +52,37 @@ export default function Home() {
         </header>
 
         {/* Hero */}
-        <div className="flex flex-1 flex-col-reverse items-center justify-center md:flex-row">
-          <div className="space-y-8 md:w-1/2">
-            <h1 className="text-very-dark-blue text-4xl font-bold md:text-5xl">
+        <div className="flex flex-1 items-center justify-center md:flex-row">
+          <div className="w-[540px] md:w-1/2">
+            <h1 className="text-very-dark-blue mb-6 text-5xl font-medium leading-[52px] md:text-5xl">
               A Simple Bookmark Manager
             </h1>
-            <p className="text-grayish-blue">
+            <p className="text-grayish-blue mb-8 text-lg leading-[28px]">
               A clean and simple interface to organize your favourite websites.
               Open a new browser tab and see your sites load instantly. Try it
               for free.
             </p>
             <div className="space-x-4">
-              <Button className="bg-soft-blue hover:text-soft-blue border-soft-blue border-2 hover:bg-white">
+              <Button className="bg-soft-blue hover:text-soft-blue border-soft-blue h-10 w-[166px] border-2 py-5 shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:bg-white">
                 Get it on Chrome
               </Button>
-              <Button
-                variant="outline"
-                className="text-very-dark-blue hover:border-very-dark-blue"
-              >
+              <Button className="text-very-dark-blue bg-fem-soft-grayish hover:border-very-dark-blue h-10 w-[166px] py-5 shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)]">
                 Get it on Firefox
               </Button>
             </div>
           </div>
-          <div className="relative md:w-1/2">
-            <Image
-              src="/images/illustration-hero.svg"
-              alt="Hero illustration"
-              width={657}
-              height={466}
-            />
-            <div className="bg-soft-blue absolute -bottom-10 -right-10 -z-10 h-4/5 w-3/4 rounded-l-full"></div>
+          <div className="relative flex-1 md:w-1/2">
+            <div className="relative h-[400px] w-full">
+              <Image
+                src="/images/illustration-hero.svg"
+                alt="Hero illustration"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                style={{ objectFit: "contain", objectPosition: "center right" }}
+                priority
+              />
+            </div>
+            <div className="bg-soft-blue absolute -bottom-10 left-[180px] -z-10 h-4/5 w-[150%] rounded-l-full"></div>
           </div>
         </div>
       </section>
