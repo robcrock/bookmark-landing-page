@@ -16,7 +16,7 @@ const config = {
       padding: "2rem",
       screens: {
         sm: "375px",
-        "2xl": "1440px",
+        "2xl": "1100px",
       },
     },
     extend: {
@@ -24,6 +24,10 @@ const config = {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
       colors: {
+        "soft-blue": "hsl(231, 69%, 60%)",
+        "soft-red": "hsl(0, 94%, 66%)",
+        "grayish-blue": "hsl(229, 8%, 60%)",
+        "very-dark-blue": "hsl(229, 31%, 21%)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -61,6 +65,13 @@ const config = {
         "fem-soft-red": "hsl(0, 94%, 66%)",
         "fem-grayish-blue": "hsl(229, 8%, 60%)",
         "fem-very-dark-blue": "hsl(229, 31%, 21%)",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -69,12 +80,20 @@ const config = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
