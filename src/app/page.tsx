@@ -58,7 +58,7 @@ export default function Home() {
         <header className="flex w-full items-center justify-between py-12">
           <div className="flex-1">
             <Image
-              src="/images/logo-bookmark.svg"
+              src="/images/logo-bookmark-light.svg"
               alt="Bookmark logo"
               width={148}
               height={25}
@@ -244,8 +244,8 @@ export default function Home() {
 
       {/* FAQ Section */}
       <section
-        id="faq"
         className="container mx-auto flex h-[800px] flex-col items-center justify-center"
+        id="faq"
       >
         <h2 className="mb-4 text-3xl font-medium leading-[52px] text-very-dark-blue">
           Frequently Asked Questions
@@ -278,24 +278,24 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="flex h-[360px] items-center bg-soft-blue"
+        className="flex h-[360px] w-full flex-col items-center justify-center bg-soft-blue"
       >
-        <div className="container mx-auto text-center">
-          <p className="mb-8 text-sm uppercase tracking-widest text-white">
+        <div className="mx-auto text-center">
+          <p className="mb-6 text-[13px] font-medium uppercase leading-[40px] tracking-[4px] text-white">
             35,000+ ALREADY JOINED
           </p>
-          <h2 className="mx-auto mb-8 max-w-md text-3xl font-bold text-white">
-            Stay up-to-date with what we&apos;re doing
+          <h2 className="mx-auto mb-8 max-w-md text-[32px] font-bold leading-10 text-white">
+            Stay up-to-date with what we're doing
           </h2>
           <form className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
             <Input
               type="email"
               placeholder="Enter your email address"
-              className="md:w-80"
+              className="h-12 bg-fem-soft-grayish md:w-full"
             />
             <Button
               type="submit"
-              className="w-full border-2 border-soft-red bg-soft-red hover:bg-white hover:text-soft-red md:w-auto"
+              className="h-12 w-[126px] border-2 border-soft-red bg-soft-red hover:bg-white hover:text-soft-red md:w-auto"
             >
               Contact Us
             </Button>
@@ -306,53 +306,42 @@ export default function Home() {
       {/* Footer */}
       <footer className="flex h-[88px] items-center bg-very-dark-blue text-white">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="flex flex-col items-center space-y-8 md:flex-row md:space-x-8 md:space-y-0">
+          <div className="flex flex-col items-center space-y-8 md:flex-row md:space-y-0">
             <Image
-              src="/images/logo-bookmark.svg"
+              src="/images/logo-bookmark-dark.svg"
               alt="Bookmark logo"
               width={148}
               height={25}
+              className="mr-16"
             />
-            <nav className="flex flex-col space-y-4 md:flex-row md:space-x-8 md:space-y-0">
-              <Link href="#features" className="hover:text-soft-red">
-                FEATURES
-              </Link>
-              <Link href="#pricing" className="hover:text-soft-red">
-                PRICING
-              </Link>
-              <Link href="#contact" className="hover:text-soft-red">
-                CONTACT
-              </Link>
+            <nav className="flex flex-col space-y-4 md:flex-row md:space-x-11 md:space-y-0">
+              {["features", "pricing", "contact"].map((link) => (
+                <Link
+                  key={link}
+                  href={`#${link}`}
+                  className="text-[13px] font-normal uppercase leading-[17px] tracking-[1.5px] hover:text-soft-red"
+                >
+                  {link.charAt(0).toUpperCase() + link.slice(1)}
+                </Link>
+              ))}
             </nav>
           </div>
           <div className="mt-8 flex space-x-8 md:mt-0">
             <a href="#" aria-label="Facebook">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                aria-hidden="true"
-              >
-                <path
-                  fill="#FFF"
-                  fillRule="evenodd"
-                  d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"
-                />
-              </svg>
+              <Image
+                src="/images/icon-facebook.svg"
+                alt="Facebook"
+                width={24}
+                height={24}
+              />
             </a>
             <a href="#" aria-label="Twitter">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="20"
-                aria-hidden="true"
-              >
-                <path
-                  fill="#FFF"
-                  fillRule="evenodd"
-                  d="M24 2.557a9.83 9.83 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337.608a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 0 1 1.671 1.149a4.93 4.93 0 0 0 1.523 6.574 4.903 4.903 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.928 4.928 0 0 0 4.6 3.419A9.9 9.9 0 0 1 0 17.54a13.94 13.94 0 0 0 7.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0 0 24 2.557z"
-                />
-              </svg>
+              <Image
+                src="/images/icon-twitter.svg"
+                alt="Twitter"
+                width={24}
+                height={20}
+              />
             </a>
           </div>
         </div>
