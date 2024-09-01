@@ -21,7 +21,6 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 
 const commonTabsTriggerClasses =
   "text-very-dark-blue hover:text-soft-red data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
@@ -130,10 +129,15 @@ export default function Home() {
           </nav>
           <div className="flex flex-1 justify-end md:hidden">
             <Button
-              className="bg-transparent p-0 hover:bg-transparent"
+              className="bg-transparent p-0 shadow-none hover:bg-transparent"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              <Menu className="h-6 w-6 text-very-dark-blue" />
+              <Image
+                src="/images/icon-hamburger.svg"
+                alt="Menu"
+                width={24}
+                height={18}
+              />
             </Button>
           </div>
           <div className="hidden md:flex md:flex-1 md:justify-end">
@@ -145,45 +149,52 @@ export default function Home() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 bg-very-dark-blue bg-opacity-90 p-8">
-            <div className="flex justify-between">
-              <Image
-                src="/images/logo-bookmark-dark.svg"
-                alt="Bookmark logo"
-                width={148}
-                height={25}
-              />
-              <Button
-                className="bg-transparent p-0 hover:bg-transparent"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <X className="h-6 w-6 text-white" />
-              </Button>
-            </div>
-            <nav className="mt-10 flex flex-col items-center space-y-6 text-center text-xl text-white">
-              <Link
-                href="#features"
-                className="w-full border-t border-white/20 py-4"
-              >
-                FEATURES
-              </Link>
-              <Link
-                href="#pricing"
-                className="w-full border-t border-white/20 py-4"
-              >
-                PRICING
-              </Link>
-              <Link
-                href="#contact"
-                className="w-full border-t border-white/20 py-4"
-              >
-                CONTACT
-              </Link>
-              <Button className="mt-6 w-full border-2 border-white py-2">
+          <div className="fixed inset-0 z-50 flex h-full w-full flex-col justify-between bg-very-dark-blue/95 pb-12 pt-10">
+            <div className="container mx-auto">
+              <div className="flex justify-between">
+                <Image
+                  src="/images/logo-bookmark-menu.svg"
+                  alt="Bookmark logo"
+                  width={148}
+                  height={25}
+                />
+                <Button
+                  className="bg-transparent p-0 hover:bg-transparent"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <Image
+                    src="/images/icon-close.svg"
+                    alt="Close menu"
+                    width={16}
+                    height={15}
+                  />
+                </Button>
+              </div>
+              <nav className="mt-10 flex flex-col items-center space-y-6 border-b border-b-white/20 text-center text-xl text-white">
+                <Link
+                  href="#features"
+                  className="w-full border-t border-white/20 py-4"
+                >
+                  FEATURES
+                </Link>
+                <Link
+                  href="#pricing"
+                  className="w-full border-t border-white/20 py-4"
+                >
+                  PRICING
+                </Link>
+                <Link
+                  href="#contact"
+                  className="w-full border-t border-white/20 py-4"
+                >
+                  CONTACT
+                </Link>
+              </nav>
+              <Button className="mt-6 h-12 w-full rounded-[5px] border-2 border-white bg-transparent text-white">
                 LOGIN
               </Button>
-            </nav>
-            <div className="mt-12 flex justify-center space-x-10">
+            </div>
+            <div className="flex justify-center space-x-10">
               <Image
                 src="/images/icon-facebook.svg"
                 alt="Facebook"
