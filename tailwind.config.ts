@@ -63,7 +63,7 @@ const config = {
         },
         "fem-soft-blue": "hsl(231, 69%, 60%)",
         "fem-soft-red": "hsl(0, 94%, 66%)",
-        "fem-grayish-blue": "hsl(229, 8%, 60%)",
+        "fem-grayish-blue": "#242A45",
         "fem-soft-grayish": "hsl(229, 8%, 90%)",
         "fem-very-dark-blue": "hsl(229, 31%, 21%)",
         chart: {

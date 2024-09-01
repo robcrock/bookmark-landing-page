@@ -10,11 +10,46 @@ import {
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FeatureContent } from "@/components/feature-content";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 
 const commonTabsTriggerClasses =
   "text-very-dark-blue hover:text-soft-red data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
 
 export default function Home() {
+  const faqItems = [
+    {
+      value: "item-1",
+      triggerText: "What is Bookmark?",
+      contentText:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.",
+    },
+    {
+      value: "item-2",
+      triggerText: "How can I request a new browser?",
+      contentText:
+        "Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.",
+    },
+    {
+      value: "item-3",
+      triggerText: "Is there a mobile app?",
+      contentText:
+        "Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed sollicitudin ex et ultricies bibendum.",
+    },
+    {
+      value: "item-4",
+      triggerText: "What about other Chromium browsers?",
+      contentText:
+        "Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam vitae neque eget nisl gravida pellentesque non ut velit.",
+    },
+  ];
+
   return (
     <main className="min-h-screen">
       {/* Header and Hero Section */}
@@ -50,7 +85,7 @@ export default function Home() {
             </Link>
           </nav>
           <div className="flex flex-1 justify-end">
-            <Button className="bg-soft-red hover:text-soft-red border-soft-red h-10 w-[111px] rounded-[5px] border-2 hover:bg-white">
+            <Button className="h-10 w-[111px] rounded-[5px] border-2 border-soft-red bg-soft-red hover:bg-white hover:text-soft-red">
               LOGIN
             </Button>
           </div>
@@ -59,19 +94,19 @@ export default function Home() {
         {/* Hero */}
         <div className="flex flex-1 items-center justify-center md:flex-row">
           <div className="w-[540px] md:w-1/2">
-            <h1 className="text-very-dark-blue mb-6 text-5xl font-medium leading-[52px] md:text-5xl">
+            <h1 className="mb-6 text-5xl font-medium leading-[52px] text-very-dark-blue md:text-5xl">
               A Simple Bookmark Manager
             </h1>
-            <p className="text-grayish-blue mb-8 text-lg leading-[28px]">
+            <p className="mb-8 text-lg leading-[28px] text-grayish-blue">
               A clean and simple interface to organize your favourite websites.
               Open a new browser tab and see your sites load instantly. Try it
               for free.
             </p>
             <div className="space-x-4">
-              <Button className="bg-soft-blue hover:text-soft-blue border-soft-blue h-10 w-[166px] border-2 py-5 shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:bg-white">
+              <Button className="h-10 w-[166px] border-2 border-soft-blue bg-soft-blue py-5 shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:bg-white hover:text-soft-blue">
                 Get it on Chrome
               </Button>
-              <Button className="text-very-dark-blue bg-fem-soft-grayish hover:border-very-dark-blue h-10 w-[166px] py-5 shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)]">
+              <Button className="h-10 w-[166px] bg-fem-soft-grayish py-5 text-very-dark-blue shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:border-very-dark-blue">
                 Get it on Firefox
               </Button>
             </div>
@@ -87,7 +122,7 @@ export default function Home() {
                 priority
               />
             </div>
-            <div className="bg-soft-blue absolute -bottom-10 left-[180px] -z-10 h-4/5 w-[150%] rounded-l-full"></div>
+            <div className="absolute -bottom-10 left-[180px] -z-10 h-4/5 w-[150%] rounded-l-full bg-soft-blue"></div>
           </div>
         </div>
       </section>
@@ -98,10 +133,10 @@ export default function Home() {
         className="container mx-auto flex h-[800px] flex-col items-center"
       >
         <div className="mb-[72px] flex flex-col items-center">
-          <h2 className="text-very-dark-blue mb-4 text-3xl font-medium leading-[52px]">
+          <h2 className="mb-4 text-3xl font-medium leading-[52px] text-very-dark-blue">
             Features
           </h2>
-          <p className="text-grayish-blue mx-auto max-w-lg text-center text-lg leading-[28px]">
+          <p className="mx-auto max-w-lg text-center text-lg leading-[28px] text-grayish-blue">
             Our aim is to make it quick and easy for you to access your
             favourite websites. Your bookmarks sync between your devices so you
             can access them on the go.
@@ -153,46 +188,56 @@ export default function Home() {
       </section>
 
       {/* Download Section */}
-      <section className="container mx-auto flex h-[800px] flex-col justify-center">
-        <h2 className="text-very-dark-blue mb-4 text-3xl font-bold">
-          Download the extension
-        </h2>
-        <p className="text-grayish-blue mx-auto mb-8 max-w-lg">
-          We've got more browsers in the pipeline. Please do let us know if
-          you've got a favourite you'd like us to prioritize.
-        </p>
-        <div className="flex flex-col justify-center space-y-8 md:flex-row md:space-x-8 md:space-y-0">
-          {["chrome", "firefox", "opera"].map((browser, index) => (
-            <div
+      <section className="container mx-auto flex h-[800px] flex-col items-center justify-center">
+        <div className="mb-12 flex flex-col items-center">
+          <h2 className="mb-4 text-3xl font-medium leading-[52px] text-very-dark-blue">
+            Download the extension
+          </h2>
+          <p className="mx-auto max-w-lg text-center text-lg leading-[28px] text-grayish-blue">
+            We've got more browsers in the pipeline. Please do let us know if
+            you've got a favourite you'd like us to prioritize.
+          </p>
+        </div>
+        <div className="flex max-w-[911px] flex-col justify-center space-y-8 md:flex-row md:space-x-[34px] md:space-y-0">
+          {[
+            { browser: "chrome", minVersion: 62 },
+            { browser: "firefox", minVersion: 55 },
+            { browser: "opera", minVersion: 46 },
+          ].map(({ browser, minVersion }, index) => (
+            <Card
               key={browser}
-              className={`flex flex-col items-center space-y-4 rounded-lg bg-white p-8 shadow-lg ${
-                index === 1
-                  ? "md:translate-y-4"
-                  : index === 2
-                    ? "md:translate-y-8"
-                    : ""
-              }`}
+              className={`flex max-w-[280px] flex-col items-center rounded-[5px] bg-white pb-6 pt-[49px] shadow-[0_10px_20px_-5px_rgba(73,93,207,0.2)]`}
+              style={{ transform: `translateY(${index * 40}px)` }}
             >
-              <Image
-                src={`/images/logo-${browser}.svg`}
-                alt={`${browser} logo`}
-                width={102}
-                height={100}
-              />
-              <h3 className="text-very-dark-blue text-xl font-bold">
-                Add to {browser[0].toUpperCase() + browser.slice(1)}
-              </h3>
-              <p className="text-grayish-blue">Minimum version {index + 55}</p>
-              <Image
-                src="/images/bg-dots.svg"
-                alt="Dots"
-                width={280}
-                height={4}
-              />
-              <Button className="bg-soft-blue hover:text-soft-blue border-soft-blue w-full border-2 hover:bg-white">
-                Add & Install Extension
-              </Button>
-            </div>
+              <CardHeader className="flex flex-col items-center space-y-0 p-0">
+                <Image
+                  src={`/images/logo-${browser}.svg`}
+                  alt={`${browser} logo`}
+                  width={102}
+                  height={100}
+                  className="mb-8"
+                />
+                <CardTitle className="mb-[6px] mt-0 text-xl font-medium text-very-dark-blue">
+                  Add to {browser[0].toUpperCase() + browser.slice(1)}
+                </CardTitle>
+                <CardDescription className="text-[15px] leading-[28px] text-grayish-blue">
+                  Minimum version {minVersion}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="mb-[24px] mt-[32px] p-0">
+                <Image
+                  src="/images/bg-dots.svg"
+                  alt="Dots"
+                  width={280}
+                  height={4}
+                />
+              </CardContent>
+              <CardFooter className="p-0">
+                <Button className="h-12 w-full rounded-[5px] border-soft-blue bg-soft-blue hover:text-soft-blue">
+                  Add & Install Extension
+                </Button>
+              </CardFooter>
+            </Card>
           ))}
         </div>
       </section>
@@ -200,66 +245,40 @@ export default function Home() {
       {/* FAQ Section */}
       <section
         id="faq"
-        className="container mx-auto flex h-[800px] flex-col justify-center"
+        className="container mx-auto flex h-[800px] flex-col items-center justify-center"
       >
-        <h2 className="text-very-dark-blue mb-4 text-3xl font-bold">
+        <h2 className="mb-4 text-3xl font-medium leading-[52px] text-very-dark-blue">
           Frequently Asked Questions
         </h2>
-        <p className="text-grayish-blue mx-auto mb-8 max-w-lg">
+        <p className="mx-auto mb-14 max-w-lg text-center text-lg leading-[28px] text-grayish-blue">
           Here are some of our FAQs. If you have any other questions you'd like
           answered please feel free to email us.
         </p>
-        <Accordion type="single" collapsible className="mx-auto max-w-xl">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>What is Bookmark?</AccordionTrigger>
-            <AccordionContent>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-              tincidunt justo eget ultricies fringilla. Phasellus blandit ipsum
-              quis quam ornare mattis.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>
-              How can I request a new browser?
-            </AccordionTrigger>
-            <AccordionContent>
-              Vivamus luctus eros aliquet convallis ultricies. Mauris augue
-              massa, ultricies non ligula. Suspendisse imperdiet. Vivamus luctus
-              eros aliquet convallis ultricies. Mauris augue massa, ultricies
-              non ligula. Suspendisse imperdie tVivamus luctus eros aliquet
-              convallis ultricies. Mauris augue massa, ultricies non ligula.
-              Suspendisse imperdiet.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>Is there a mobile app?</AccordionTrigger>
-            <AccordionContent>
-              Sed consectetur quam id neque fermentum accumsan. Praesent luctus
-              vestibulum dolor, ut condimentum urna vulputate eget. Cras in
-              ligula quis est pharetra mattis sit amet pharetra purus. Sed
-              sollicitudin ex et ultricies bibendum.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-4">
-            <AccordionTrigger>
-              What about other Chromium browsers?
-            </AccordionTrigger>
-            <AccordionContent>
-              Integer condimentum ipsum id imperdiet finibus. Vivamus in
-              placerat mi, at euismod dui. Aliquam vitae neque eget nisl gravida
-              pellentesque non ut velit.
-            </AccordionContent>
-          </AccordionItem>
+        <Accordion
+          type="single"
+          collapsible
+          className="border-t-fem-grayish-blue/14 mx-auto mb-[54px] w-[540px] border-t"
+        >
+          {faqItems.map(({ value, triggerText, contentText }) => (
+            <AccordionItem
+              key={value}
+              value={value}
+              className="border-b-fem-grayish-blue/14 w-full"
+            >
+              <AccordionTrigger className="text-[18px] font-normal leading-[32px] text-very-dark-blue">
+                {triggerText}
+              </AccordionTrigger>
+              <AccordionContent>{contentText}</AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
-        <Button className="bg-soft-blue hover:text-soft-blue border-soft-blue mt-8 border-2 hover:bg-white">
-          More Info
-        </Button>
+        <Button className="h-12 w-[114px] bg-soft-blue">More Info</Button>
       </section>
 
       {/* Contact Section */}
       <section
         id="contact"
-        className="bg-soft-blue flex h-[360px] items-center"
+        className="flex h-[360px] items-center bg-soft-blue"
       >
         <div className="container mx-auto text-center">
           <p className="mb-8 text-sm uppercase tracking-widest text-white">
@@ -276,7 +295,7 @@ export default function Home() {
             />
             <Button
               type="submit"
-              className="bg-soft-red hover:text-soft-red border-soft-red w-full border-2 hover:bg-white md:w-auto"
+              className="w-full border-2 border-soft-red bg-soft-red hover:bg-white hover:text-soft-red md:w-auto"
             >
               Contact Us
             </Button>
@@ -285,7 +304,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-very-dark-blue flex h-[88px] items-center text-white">
+      <footer className="flex h-[88px] items-center bg-very-dark-blue text-white">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex flex-col items-center space-y-8 md:flex-row md:space-x-8 md:space-y-0">
             <Image
