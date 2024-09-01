@@ -21,9 +21,12 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { useState } from "react";
+import IconClose from "@/components/icon/icon-close";
+import IconFacebook from "@/components/icon/icon-facebook";
+import IconTwitter from "@/components/icon/icon-twitter";
 
 const commonTabsTriggerClasses =
-  "text-very-dark-blue hover:text-soft-red data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
+  "text-very-dark-blue hover:text-soft-red data-[state=active]:text-very-dark-blue data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
 
 const getCardClassName = (index: number) => {
   const baseClasses =
@@ -141,7 +144,7 @@ export default function Home() {
             </Button>
           </div>
           <div className="hidden md:flex md:flex-1 md:justify-end">
-            <Button className="h-10 w-[111px] rounded-[5px] border-2 border-soft-red bg-soft-red hover:bg-white hover:text-soft-red">
+            <Button className="h-10 w-[111px] rounded-[5px] border-2 border-soft-red bg-soft-red text-white hover:bg-white hover:text-soft-red">
               LOGIN
             </Button>
           </div>
@@ -159,54 +162,43 @@ export default function Home() {
                   height={25}
                 />
                 <Button
-                  className="bg-transparent p-0 hover:bg-transparent"
+                  className="group bg-transparent p-0 transition-transform duration-300 hover:bg-transparent"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Image
-                    src="/images/icon-close.svg"
-                    alt="Close menu"
-                    width={16}
-                    height={15}
-                  />
+                  <IconClose className="text-white transition-colors duration-300 group-hover:text-soft-red" />
                 </Button>
               </div>
               <nav className="mt-10 flex flex-col items-center space-y-6 border-b border-b-white/20 text-center text-xl text-white">
                 <Link
                   href="#features"
-                  className="w-full border-t border-white/20 py-4"
+                  className="w-full border-t border-white/20 py-4 hover:text-soft-red"
                 >
                   FEATURES
                 </Link>
                 <Link
                   href="#pricing"
-                  className="w-full border-t border-white/20 py-4"
+                  className="w-full border-t border-white/20 py-4 hover:text-soft-red"
                 >
                   PRICING
                 </Link>
                 <Link
                   href="#contact"
-                  className="w-full border-t border-white/20 py-4"
+                  className="w-full border-t border-white/20 py-4 hover:text-soft-red"
                 >
                   CONTACT
                 </Link>
               </nav>
-              <Button className="mt-6 h-12 w-full rounded-[5px] border-2 border-white bg-transparent text-white">
+              <Button className="mt-6 h-12 w-full rounded-[5px] border-2 border-white bg-transparent text-white transition-colors duration-300 hover:bg-white hover:text-fem-very-dark-blue">
                 LOGIN
               </Button>
             </div>
             <div className="flex justify-center space-x-10">
-              <Image
-                src="/images/icon-facebook.svg"
-                alt="Facebook"
-                width={24}
-                height={24}
-              />
-              <Image
-                src="/images/icon-twitter.svg"
-                alt="Twitter"
-                width={24}
-                height={24}
-              />
+              <a href="#" aria-label="Facebook" className="group">
+                <IconFacebook className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
+              </a>
+              <a href="#" aria-label="Twitter" className="group">
+                <IconTwitter className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
+              </a>
             </div>
           </div>
         )}
@@ -223,10 +215,10 @@ export default function Home() {
               for free.
             </p>
             <div className="flex space-x-4">
-              <Button className="mb-3 h-12 w-full border-2 border-soft-blue bg-soft-blue py-3 text-sm shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:bg-white hover:text-soft-blue md:mb-0 md:h-10 md:w-[166px] md:py-5">
+              <Button className="mb-3 h-12 w-full border-2 border-soft-blue bg-soft-blue py-3 text-sm text-white shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:bg-white hover:text-soft-blue md:mb-0 md:h-10 md:w-[166px] md:py-5">
                 Get it on Chrome
               </Button>
-              <Button className="h-12 w-full bg-fem-soft-grayish py-3 text-sm text-very-dark-blue shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:border-very-dark-blue md:h-10 md:w-[166px] md:py-5">
+              <Button className="h-12 w-full border-2 border-fem-soft-grayish bg-fem-soft-grayish py-3 text-sm text-very-dark-blue shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:border-2 hover:border-fem-very-dark-blue hover:bg-white hover:text-fem-very-dark-blue md:h-10 md:w-[166px] md:py-5">
                 Get it on Firefox
               </Button>
             </div>
@@ -331,7 +323,7 @@ export default function Home() {
                 />
               </CardContent>
               <CardFooter className="p-0">
-                <Button className="h-12 w-full rounded-[5px] border-soft-blue bg-soft-blue hover:text-soft-blue">
+                <Button className="h-12 w-full rounded-[5px] border-2 border-soft-blue bg-soft-blue text-white hover:bg-white hover:text-soft-blue">
                   Add & Install Extension
                 </Button>
               </CardFooter>
@@ -363,14 +355,16 @@ export default function Home() {
               value={value}
               className="border-b-fem-grayish-blue/14 w-full"
             >
-              <AccordionTrigger className="text-start text-[15px] font-normal leading-[32px] text-very-dark-blue md:text-[18px]">
+              <AccordionTrigger className="text-start text-[15px] font-normal leading-[32px] text-very-dark-blue hover:text-soft-red md:text-[18px]">
                 {triggerText}
               </AccordionTrigger>
               <AccordionContent>{contentText}</AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
-        <Button className="h-12 w-[114px] bg-soft-blue">More Info</Button>
+        <Button className="h-12 w-[114px] bg-soft-blue text-white hover:border-2 hover:border-soft-blue hover:bg-white hover:text-soft-blue">
+          More Info
+        </Button>
       </section>
 
       {/* Contact Section */}
@@ -393,7 +387,7 @@ export default function Home() {
             />
             <Button
               type="submit"
-              className="h-12 w-full border-2 border-soft-red bg-soft-red hover:bg-white hover:text-soft-red md:w-[126px]"
+              className="h-12 w-full border-2 border-soft-red bg-soft-red text-white hover:bg-white hover:text-soft-red md:w-[126px]"
             >
               Contact Us
             </Button>
@@ -425,21 +419,11 @@ export default function Home() {
             </nav>
           </div>
           <div className="mt-8 flex space-x-8 md:mt-0">
-            <a href="#" aria-label="Facebook">
-              <Image
-                src="/images/icon-facebook.svg"
-                alt="Facebook"
-                width={24}
-                height={24}
-              />
+            <a href="#" aria-label="Facebook" className="group">
+              <IconFacebook className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
             </a>
-            <a href="#" aria-label="Twitter">
-              <Image
-                src="/images/icon-twitter.svg"
-                alt="Twitter"
-                width={24}
-                height={20}
-              />
+            <a href="#" aria-label="Twitter" className="group">
+              <IconTwitter className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
             </a>
           </div>
         </div>

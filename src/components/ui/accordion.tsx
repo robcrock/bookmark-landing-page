@@ -28,19 +28,32 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all [&[data-state=open]>svg]:rotate-180",
+        "group flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all",
         className,
       )}
       {...props}
     >
       {children}
-      <Image
-        src="/images/icon-arrow.svg"
-        alt="Arrow Icon"
-        width={16}
-        height={16}
-        className="h-[10px] w-4 shrink-0 text-fem-soft-blue transition-transform duration-200 md:mr-6"
-      />
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn(
+          "h-[10px] w-4 shrink-0 transition-transform duration-200 md:mr-6",
+          "text-fem-soft-blue group-data-[state=open]:text-fem-soft-red",
+          "group-data-[state=open]:rotate-180",
+        )}
+      >
+        <path
+          d="M2 5L8 11L14 5"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));

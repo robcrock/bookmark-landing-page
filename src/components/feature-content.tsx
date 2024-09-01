@@ -36,7 +36,7 @@ export function FeatureContent({
             {description}
           </p>
         </div>
-        <Button className="h-10 w-[111px] bg-soft-blue shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] hover:bg-white hover:text-soft-blue md:block">
+        <Button className="h-10 w-[111px] bg-soft-blue text-white shadow-[0_8px_8px_-4px_rgba(73,93,207,0.2)] transition-all duration-300 hover:border-2 hover:border-soft-blue hover:bg-white hover:text-soft-blue active:bg-very-dark-blue active:text-white md:block">
           More Info
         </Button>
       </div>
