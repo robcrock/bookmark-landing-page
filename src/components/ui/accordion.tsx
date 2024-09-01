@@ -39,7 +39,7 @@ const AccordionTrigger = React.forwardRef<
         alt="Arrow Icon"
         width={16}
         height={16}
-        className="mr-6 h-[10px] w-4 shrink-0 text-fem-soft-blue transition-transform duration-200"
+        className="h-[10px] w-4 shrink-0 text-fem-soft-blue transition-transform duration-200 md:mr-6"
       />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
