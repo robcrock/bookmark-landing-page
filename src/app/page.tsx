@@ -4,6 +4,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import {
   Accordion,
   AccordionContent,
   AccordionItem,
@@ -24,6 +30,17 @@ import { useState } from "react";
 import IconClose from "@/components/icon/icon-close";
 import IconFacebook from "@/components/icon/icon-facebook";
 import IconTwitter from "@/components/icon/icon-twitter";
+import IconError from "@/components/icon/icon-error";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Form } from "@/components/ui/form";
+import { cn } from "@/lib/utils";
+
+const formSchema = z.object({
+  email: z.string().email("Whoops, make sure it's an email"),
+});
 
 const commonTabsTriggerClasses =
   "text-very-dark-blue hover:text-soft-red data-[state=active]:text-very-dark-blue data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
@@ -41,6 +58,18 @@ const getCardClassName = (index: number) => {
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+    // Handle form submission
+  }
 
   const faqItems = [
     {
@@ -379,19 +408,49 @@ export default function Home() {
           <h2 className="mx-auto mb-6 max-w-md text-2xl font-bold leading-tight text-white md:mb-8 md:text-[32px] md:leading-10">
             Stay up-to-date with what we're doing
           </h2>
-          <form className="flex flex-col items-center justify-center space-y-4 md:flex-row md:space-x-4 md:space-y-0">
-            <Input
-              type="email"
-              placeholder="Enter your email address"
-              className="h-12 w-full bg-[#ffffff] md:w-auto"
-            />
-            <Button
-              type="submit"
-              className="h-12 w-full border-2 border-soft-red bg-soft-red text-white hover:bg-white hover:text-soft-red md:w-[126px]"
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className={cn(
+                "flex flex-col items-center justify-center md:flex-row md:space-x-4 md:space-y-0",
+                form.formState.errors.email ? "space-y-8" : "space-y-4",
+              )}
             >
-              Contact Us
-            </Button>
-          </form>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="relative w-full md:w-[300px]">
+                    <FormControl>
+                      <div className="relative">
+                        <Input
+                          placeholder="Enter your email address"
+                          className={`relative z-10 h-12 w-full bg-[#ffffff] pr-10 focus-visible:ring-0 ${
+                            form.formState.errors.email
+                              ? "border-2 border-soft-red"
+                              : ""
+                          }`}
+                          {...field}
+                        />
+                        {form.formState.errors.email && (
+                          <div className="absolute right-3 top-1/2 z-10 -translate-y-1/2 transform">
+                            <IconError className="h-6 w-6 text-soft-red" />
+                          </div>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage className="absolute -bottom-6 w-full rounded-b-[5px] bg-fem-soft-red px-2 pb-[6px] pt-4 text-start text-[10px] italic text-white" />
+                  </FormItem>
+                )}
+              />
+              <Button
+                type="submit"
+                className="h-12 w-full border-2 border-soft-red bg-soft-red text-white hover:bg-white hover:text-soft-red md:w-[126px]"
+              >
+                Contact Us
+              </Button>
+            </form>
+          </Form>
         </div>
       </section>
 
