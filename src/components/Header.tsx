@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import IconClose from "@/components/icon/icon-close";
 import IconFacebook from "@/components/icon/icon-facebook";
 import IconTwitter from "@/components/icon/icon-twitter";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface HeaderProps {
   mobileMenuOpen: boolean;
@@ -67,57 +68,65 @@ export default function Header({
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 flex h-full w-full flex-col justify-between bg-very-dark-blue/95 pb-12 pt-10">
-          <div className="container mx-auto">
-            <div className="flex justify-between">
-              <Image
-                src="/images/logo-bookmark-menu.svg"
-                alt="Bookmark logo"
-                width={148}
-                height={25}
-              />
-              <Button
-                className="group bg-transparent p-0 transition-transform duration-300 hover:bg-transparent"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <IconClose className="text-white transition-colors duration-300 group-hover:text-soft-red" />
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className="fixed inset-0 z-50 flex h-full w-full flex-col justify-between bg-very-dark-blue/95 pb-12 pt-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="container mx-auto">
+              <div className="flex justify-between">
+                <Image
+                  src="/images/logo-bookmark-menu.svg"
+                  alt="Bookmark logo"
+                  width={148}
+                  height={25}
+                />
+                <Button
+                  className="group bg-transparent p-0 transition-transform duration-300 hover:bg-transparent"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <IconClose className="text-white transition-colors duration-300 group-hover:text-soft-red" />
+                </Button>
+              </div>
+              <nav className="mt-10 flex flex-col items-center space-y-6 border-b border-b-white/20 text-center text-xl text-white">
+                <Link
+                  href="#features"
+                  className="w-full border-t border-white/20 py-4 hover:text-soft-red"
+                >
+                  FEATURES
+                </Link>
+                <Link
+                  href="#pricing"
+                  className="w-full border-t border-white/20 py-4 hover:text-soft-red"
+                >
+                  PRICING
+                </Link>
+                <Link
+                  href="#contact"
+                  className="w-full border-t border-white/20 py-4 hover:text-soft-red"
+                >
+                  CONTACT
+                </Link>
+              </nav>
+              <Button className="mt-6 h-12 w-full rounded-[5px] border-2 border-white bg-transparent text-white transition-colors duration-300 hover:bg-white hover:text-fem-very-dark-blue">
+                LOGIN
               </Button>
             </div>
-            <nav className="mt-10 flex flex-col items-center space-y-6 border-b border-b-white/20 text-center text-xl text-white">
-              <Link
-                href="#features"
-                className="w-full border-t border-white/20 py-4 hover:text-soft-red"
-              >
-                FEATURES
-              </Link>
-              <Link
-                href="#pricing"
-                className="w-full border-t border-white/20 py-4 hover:text-soft-red"
-              >
-                PRICING
-              </Link>
-              <Link
-                href="#contact"
-                className="w-full border-t border-white/20 py-4 hover:text-soft-red"
-              >
-                CONTACT
-              </Link>
-            </nav>
-            <Button className="mt-6 h-12 w-full rounded-[5px] border-2 border-white bg-transparent text-white transition-colors duration-300 hover:bg-white hover:text-fem-very-dark-blue">
-              LOGIN
-            </Button>
-          </div>
-          <div className="flex justify-center space-x-10">
-            <a href="#" aria-label="Facebook" className="group">
-              <IconFacebook className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
-            </a>
-            <a href="#" aria-label="Twitter" className="group">
-              <IconTwitter className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
-            </a>
-          </div>
-        </div>
-      )}
+            <div className="flex justify-center space-x-10">
+              <a href="#" aria-label="Facebook" className="group">
+                <IconFacebook className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
+              </a>
+              <a href="#" aria-label="Twitter" className="group">
+                <IconTwitter className="fill-white transition-colors duration-300 group-hover:fill-soft-red" />
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

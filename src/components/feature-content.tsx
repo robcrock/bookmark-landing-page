@@ -24,7 +24,6 @@ export function FeatureContent({
             style={{ objectFit: "contain", objectPosition: "center" }}
           />
         </div>
-        <div className="absolute -bottom-10 right-20 -z-10 h-[200px] w-[1000%] rounded-r-full bg-soft-blue md:-bottom-10 md:left-auto md:right-[180px] md:h-4/5"></div>
       </div>
 
       <div className="mt-[70px] flex w-full flex-col items-center text-center md:mt-0 md:w-1/2 md:items-start md:pl-[70px] md:text-left">
@@ -41,5 +40,11 @@ export function FeatureContent({
         </Button>
       </div>
     </div>
+  );
+}
+
+export function FeatureBackground() {
+  return (
+    <div className="absolute bottom-[50%] left-[-120%] -z-10 h-[200px] w-[200%] rounded-r-full bg-soft-blue md:bottom-[-20%] md:left-[-50%] md:h-4/5 md:w-[85%]"></div>
   );
 }

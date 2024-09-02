@@ -1,7 +1,11 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FeatureContent } from "@/components/feature-content";
+import {
+  FeatureContent,
+  FeatureBackground,
+} from "@/components/feature-content";
+import { motion, AnimatePresence } from "framer-motion";
 
 const commonTabsTriggerClasses =
   "text-very-dark-blue hover:text-soft-red data-[state=active]:text-very-dark-blue data-[state=active]:border-soft-red after:bg-soft-red relative w-full rounded-none border-b border-[#495DCF] border-opacity-20 bg-transparent px-8 pb-[13px] font-normal text-opacity-75 after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:scale-x-0 after:transition-transform focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=active]:pb-[13px] data-[state=active]:shadow-none data-[state=active]:after:scale-x-100";
@@ -64,15 +68,27 @@ export default function Features() {
             </TabsTrigger>
           ))}
         </TabsList>
-        {featuresTabs.map((tab) => (
-          <TabsContent key={tab.value} value={tab.value}>
-            <FeatureContent
-              imageSrc={tab.imageSrc}
-              title={tab.title}
-              description={tab.description}
-            />
-          </TabsContent>
-        ))}
+        <div className="relative">
+          <FeatureBackground />
+          <AnimatePresence mode="wait">
+            {featuresTabs.map((tab) => (
+              <TabsContent key={tab.value} value={tab.value} asChild>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <FeatureContent
+                    imageSrc={tab.imageSrc}
+                    title={tab.title}
+                    description={tab.description}
+                  />
+                </motion.div>
+              </TabsContent>
+            ))}
+          </AnimatePresence>
+        </div>
       </Tabs>
     </section>
   );
