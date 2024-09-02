@@ -7,8 +7,11 @@ This is a solution to the [Bookmark landing page challenge on Frontend Mentor](h
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
+  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
 - [Author](#author)
 
 ## Overview
@@ -25,18 +28,40 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![alt text](image.png)
 
 ### Links
 
 - [Solution URL](https://github.com/robcrock/bookmark-landing-page)
 - [Live Site URL](https://bookmark-landing-page-jade-gamma.vercel.app/)
 
+## My process
+
 ### Built with
 
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
-- [Tailwind](https://tailwindcss.com/)
+- [Tailwind CSS](https://tailwindcss.com/) - For styles
+- Mobile-first workflow
+- Responsive design principles
+
+### What I learned
+
+During this project, I improved my skills in:
+
+- Implementing responsive design using Tailwind CSS
+- Creating interactive UI elements with React
+- Form validation and error handling
+- Optimizing performance in Next.js applications
+
+### Continued development
+
+Areas I want to continue focusing on in future projects:
+
+- Advanced React hooks and state management
+- Accessibility improvements
+- Testing React components
+- Further optimization techniques in Next.js
 
 ## Author
 
