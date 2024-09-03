@@ -41,7 +41,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="container mx-auto flex min-h-screen flex-col items-center space-y-10 px-8 py-20 md:px-0"
+      className="container mx-auto flex min-h-screen flex-col items-center space-y-10 overflow-hidden px-8 py-20 md:px-0"
     >
       <div className="mb-10 flex flex-col items-center md:mb-[72px]">
         <h2 className="mb-4 text-2xl font-medium leading-tight text-very-dark-blue md:text-3xl md:leading-[52px]">
@@ -68,7 +68,7 @@ export default function Features() {
             </TabsTrigger>
           ))}
         </TabsList>
-        <div className="relative">
+        <div className="relative w-full">
           <FeatureBackground />
           <AnimatePresence mode="wait">
             {featuresTabs.map((tab) => (

@@ -32,7 +32,7 @@ export default function Hero() {
             priority
           />
         </div>
-        <div className="absolute bottom-2 left-20 -z-10 h-[200px] w-[1000%] rounded-l-full bg-soft-blue md:-bottom-10 md:left-[180px] md:h-4/5"></div>
+        <div className="absolute bottom-2 left-20 -z-10 h-[200px] w-full rounded-l-full bg-soft-blue md:-bottom-10 md:left-[180px] md:h-4/5"></div>
       </div>
     </div>
   );
